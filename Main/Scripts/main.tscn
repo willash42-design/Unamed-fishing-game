@@ -1,6 +1,75 @@
 [gd_scene format=3 uid="uid://thky6dfj8qn6"]
 
 [ext_resource type="Script" uid="uid://cv0y5xsil2lua" path="res://main.gd" id="1_sqe7m"]
+[ext_resource type="Script" uid="uid://hh8nkac8rxfb" path="res://Main/Scripts/player_movement.gd" id="2_o1ex4"]
+[ext_resource type="Texture2D" uid="uid://sf21c56o2vef" path="res://Character/Walking/Walking Down/Walking_Down_0001.png" id="3_mmgfq"]
+[ext_resource type="Texture2D" uid="uid://dmjmdjl2aqc1x" path="res://Character/Walking/Walking Down/Walking_Down_0002.png" id="4_qqjwc"]
+[ext_resource type="Texture2D" uid="uid://c5xxcgvq4ag2k" path="res://Character/Walking/Walking Left/Walking_Left_0001.png" id="5_w4ljf"]
+[ext_resource type="Texture2D" uid="uid://b1korgtrphjm" path="res://Character/Walking/Walking Left/Walking_Left_0002.png" id="6_v7er3"]
+[ext_resource type="Texture2D" uid="uid://bp6d5iwl0prln" path="res://Character/Walking/Walking Right/Walking_Right_0001.png" id="7_y57py"]
+[ext_resource type="Texture2D" uid="uid://34sqwcc8koca" path="res://Character/Walking/Walking Right/Walking_Right_0002.png" id="8_tie7u"]
+[ext_resource type="Texture2D" uid="uid://cs1oaav3q874c" path="res://Character/Walking/Walking Up/Walking_Up_0001.png" id="9_opcd2"]
+[ext_resource type="Texture2D" uid="uid://dc0815ftnk10e" path="res://Character/Walking/Walking Up/Walking_Up_0002.png" id="10_7op4e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ea7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mmgfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qqjwc")
+}],
+"loop": 1,
+"name": &"Walk_Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w4ljf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v7er3")
+}],
+"loop": 1,
+"name": &"Walk_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y57py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tie7u")
+}],
+"loop": 1,
+"name": &"Walk_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_opcd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7op4e")
+}],
+"loop": 1,
+"name": &"Walk_Up",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node" unique_id=1820686812]
 script = ExtResource("1_sqe7m")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=569084284]
+script = ExtResource("2_o1ex4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=397803075]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1426729023]
+position = Vector2(207, 368)
+scale = Vector2(5.059923, 5.75392)
+sprite_frames = SubResource("SpriteFrames_7ea7d")
+animation = &"Walk_Up"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1839424548]
